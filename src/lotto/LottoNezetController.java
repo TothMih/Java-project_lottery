@@ -1,7 +1,10 @@
 package lotto;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,7 +60,7 @@ public class LottoNezetController implements Initializable {
     @FXML
     private TextField input5;
     @FXML
-    private Label eredmeny;
+    private Label eredmenyLabel;
 //</editor-fold>
 
     @FXML
@@ -101,15 +104,45 @@ public class LottoNezetController implements Initializable {
             selNum4 = Integer.parseInt(input4.getText());
             selNum5 = Integer.parseInt(input5.getText());
         }catch(Exception e){
-            basePane.setDisable(true);
-            basePane.setOpacity(0.3);
-            alertPane.setVisible(true);
-            alertText.setText("Nem jó számot adtál meg!");
-            System.out.println(e);
+            alert("Nem jó számot adtál meg!");
             return "";
         }
+        
+        if(selNum1 <1 || selNum1 > 90 || selNum2 <1 || selNum2 > 90 || selNum3 <1 || selNum3 > 90 || selNum4 <1 || selNum4 > 90 ||selNum5 <1 || selNum5 > 90){
+            alert("Minden számnak 1 és 90 között kell lennie!");
+            return"";
+        }
+        
+        Set<Integer> selectedNumbers = new HashSet<>();
+        selectedNumbers.add(selNum1);
+        selectedNumbers.add(selNum2);
+        selectedNumbers.add(selNum3);
+        selectedNumbers.add(selNum4);
+        selectedNumbers.add(selNum5);
+        
+        if(selectedNumbers.size() < 5){
+            alert("A számoknak különbözőknek kell lenniük");
+            return "";
+        }
+        
+        ArrayList<Integer> userNumbers = new ArrayList<>(selectedNumbers);
+        
+        int result = 0;
+        for(int i=0;i<userNumbers.size();i++){
+            if(userNumbers.get(i) == selNum1 || userNumbers.get(i) == selNum2 || userNumbers.get(i) == selNum3 || userNumbers.get(i) == selNum4 || userNumbers.get(i) == selNum5)
+                result++;
+        }
+        
         return "";
     }
+    
+    private void alert(String text){
+        basePane.setDisable(true);
+        basePane.setOpacity(0.3);
+        alertPane.setVisible(true);
+        alertText.setText(text);
+    }
+    
     
     private int getRandomNumber(){
         int random = (int) (Math.random() * MAX) + MIN;
