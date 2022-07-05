@@ -60,7 +60,7 @@ public class LottoNezetController implements Initializable {
     @FXML
     private TextField input5;
     @FXML
-    private Label eredmenyLabel;
+    private Label resultLabel;
 //</editor-fold>
 
     @FXML
@@ -129,8 +129,23 @@ public class LottoNezetController implements Initializable {
         
         int result = 0;
         for(int i=0;i<userNumbers.size();i++){
-            if(userNumbers.get(i) == selNum1 || userNumbers.get(i) == selNum2 || userNumbers.get(i) == selNum3 || userNumbers.get(i) == selNum4 || userNumbers.get(i) == selNum5)
+            if(userNumbers.get(i) == getNum1 || userNumbers.get(i) == getNum2 || userNumbers.get(i) == getNum3 || userNumbers.get(i) == getNum4 || userNumbers.get(i) == getNum5)
                 result++;
+        }
+        
+        switch(result){
+            case 0: resultLabel.setText("Sajnos nem nyertél semmit");
+                break;
+            case 1: resultLabel.setText("Egyesed van a lottón, sajnos ez nem fizet semmit.");
+                break;
+            case 2: resultLabel.setText("Kettesed van a lottón, sajnos ez csak mosolyra elég.");
+                break;
+            case 3: resultLabel.setText("Hármaod van a lottón, ez már valami!");
+                break;
+            case 4: resultLabel.setText("Négyesed van a lottón. Legyél magadra büszke!");
+                break;
+            case 5: resultLabel.setText("Ötösöd van. Gratulálok!");
+                break;
         }
         
         return "";
