@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -34,6 +35,8 @@ public class LottoNezetController implements Initializable {
     @FXML
     private Label alertText;
     @FXML
+    private Button alertButton;
+    @FXML
     private Label label1;
     @FXML
     private Label label2;
@@ -57,6 +60,14 @@ public class LottoNezetController implements Initializable {
     private Label eredmeny;
 //</editor-fold>
 
+    @FXML
+    private void handleAlertButton(ActionEvent event){
+        basePane.setDisable(false);
+        basePane.setOpacity(1);
+        alertPane.setVisible(false);
+        alertText.setText("");
+    }
+    
     @FXML
     private void handleButtonAction(ActionEvent event){
         //We are generating numbers
@@ -95,6 +106,7 @@ public class LottoNezetController implements Initializable {
             alertPane.setVisible(true);
             alertText.setText("Nem jó számot adtál meg!");
             System.out.println(e);
+            return "";
         }
         return "";
     }

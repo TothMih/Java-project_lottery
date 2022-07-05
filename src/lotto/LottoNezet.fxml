@@ -43,8 +43,9 @@
       </Pane>
       <Pane id="alertPane" fx:id="alertPane" prefHeight="400.0" prefWidth="625.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#21ffe9" height="279.0" layoutX="91.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="437.0" />
-            <Label id="alertText" fx:id="alertText" layoutX="133.0" layoutY="132.0" prefHeight="137.0" prefWidth="359.0" textAlignment="CENTER" wrapText="true" />
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#21cbff" height="279.0" layoutX="91.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="437.0" />
+            <Label id="alertText" fx:id="alertText" layoutX="133.0" layoutY="105.0" prefHeight="108.0" prefWidth="359.0" text="Text" textAlignment="CENTER" wrapText="true" />
+            <Button id="alertButton" fx:id="alertButton" layoutX="248.0" layoutY="231.0" onAction="#handleAlertButton"  mnemonicParsing="false" text="OK" />
          </children>
       </Pane>
     </children>
